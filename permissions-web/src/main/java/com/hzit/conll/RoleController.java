@@ -21,13 +21,27 @@ public class RoleController {
     private RoleBiz roleImpl;
 
     /**
-     * 通过查询角色表全部内容的方法，返回Json字符串到页面上
+     * 通过查询角色表全部内容的方法，
      */
     @RequestMapping("/findroleall")
     @ResponseBody
     public List<Role> fingRoleAll() {
         return roleImpl.findRoleAll();
     }
+
+
+    /**
+     * 通过查询角色表全部内容的方法，返回J到页面上
+     */
+    @RequestMapping("/findroleall")
+
+    public String fingRoleAll(ModelMap modelMap) {
+        List<Role> rlist=roleImpl.findRoleAll();
+        modelMap.put("rlist",rlist);
+
+        return "shouye";
+    }
+
 
 
     /**
