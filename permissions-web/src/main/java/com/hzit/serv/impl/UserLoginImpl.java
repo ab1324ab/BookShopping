@@ -15,15 +15,19 @@ import java.util.Map;
  */
 @Service
 public class UserLoginImpl implements UserLogin{
+    public UserLoginImpl(){
+        System.out.println("我出书了");
+    }
     @Autowired
     UserMapper userMapper;
-
     @Override
     public User login(String username, String userpassword) {
-        Map<String,String> map=new HashMap();
+        Map map=new HashMap();
         map.put("userName",username);
         map.put("userPwd",userpassword);
         List<User> userList=userMapper.searchUserByParams(map);
+        if(userList.size()!=0)
         return userList.get(0);
+        return null;
     }
 }
