@@ -3,7 +3,7 @@ package com.hzit;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
-import org.springframework.boot.test.SpringApplicationConfiguration;
+
 import org.springframework.context.annotation.ComponentScan;
 
 /**
