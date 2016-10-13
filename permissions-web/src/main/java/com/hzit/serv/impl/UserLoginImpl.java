@@ -1,7 +1,29 @@
 package com.hzit.serv.impl;
 
+import com.hzit.dao.entity.User;
+import com.hzit.dao.mapper.UserMapper;
+import com.hzit.serv.UserLogin;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 /**
  * Created by Administrator on 2016/10/13.
  */
-public class UserLoginImpl {
+@Service
+public class UserLoginImpl implements UserLogin{
+    @Autowired
+    UserMapper userMapper;
+
+    @Override
+    public User login(String username, String userpassword) {
+        Map<String,String> map=new HashMap();
+        map.put("userName",username);
+        map.put("userPwd",userpassword);
+        List<User> userList=userMapper.searchUserByParams(map);
+        return userList.get(0);
+    }
 }
