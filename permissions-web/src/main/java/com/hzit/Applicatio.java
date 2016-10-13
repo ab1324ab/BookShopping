@@ -12,7 +12,7 @@ import org.springframework.context.annotation.ComponentScan;
 @SpringBootApplication
 @MapperScan("com.hzit.dao.mapper")
 @ComponentScan({"com.hzit.conll","com.hzit.serv","com.fc"})
-public class Application  extends SpringBootServletInitializer{
+public class Applicatio extends SpringBootServletInitializer{
 
 
 }
