@@ -6,6 +6,10 @@ import com.hzit.serv.UserManagement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 /**
  * Created by Administrator on 2016/10/13.
  */
@@ -13,6 +17,24 @@ import org.springframework.stereotype.Service;
 public class UserManagementImpl implements UserManagement{
     @Autowired
     private UserMapper userMapper;
+
+    @Override
+    public List<User> findAllUser() {
+        List<User> list=userMapper.searchUserByParams(null);
+        return list;
+    }
+
+    @Override
+    public User findOne(Integer userId) {
+        Map m=new HashMap();
+        m.put("userId",userId);
+        List<User> list=userMapper.searchUserByParams(m);
+        if(list.size()==1)
+            return list.get(0);
+        else
+            return null;
+    }
+
     @Override
     public boolean addUser(User user) {
         try{
