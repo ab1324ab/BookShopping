@@ -18,8 +18,8 @@ import org.springframework.context.annotation.ComponentScan;
 public class Applicatio extends SpringBootServletInitializer{
 
 
-    public static void main(String[] args) {
+   /* public static void main(String[] args) {
         UserLogin userLogin=new UserLoginImpl();
         userLogin.login("1","1");
-    }
+    }*/
 }

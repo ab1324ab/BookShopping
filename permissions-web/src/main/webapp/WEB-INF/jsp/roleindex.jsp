@@ -21,7 +21,15 @@
     <link rel="stylesheet" href="assets/css/page/typography.css"/>
     <link rel="stylesheet" href="assets/css/page/form.css"/>
     <link rel="stylesheet" href="assets/css/component.css"/>
+    <script>
+        function openWin() {
+            window.open("toaddrole","newwindow", "height=500, width=700,top=100,left=350, toolbar =no, menubar=no, scrollbars=no, resizable=no, location=no, status=no")
+        }
+
+
+    </script>
 </head>
+
 <body>
 <!-- Begin page -->
 <header class="am-topbar am-topbar-fixed-top">
@@ -90,7 +98,7 @@
 
                                 <thead>
                                 <tr>
-                                    <th>新增</th>
+                                    <th><button onclick="openWin()" >新增</button></th>
                                 </tr>
                                 </thead>
                                 <thead>
@@ -103,21 +111,19 @@
                                     <th>删除</th>
                                 </tr>
                                 </thead>
-
                                 <tbody>
-
+                                <c:forEach items="${rlist}" var="rr">
                                 <tr>
-                                    <c:forEach items="${rlist}" var="rr">
+
                                         <td>${rr.roleId}</td>
                                         <td>${rr.roleName}</td>
                                         <td>${rr.roleDepict}</td>
-                                    </c:forEach>
-                                    <td><a href="#">编辑</a></td>
-                                    <td><a href="#">详细</a></td>
-                                    <td><a href="#">删除</a></td>
-                                    <td>Coderthemes</td>
-                                </tr>
+                                        <td><a href="#">编辑</a></td>
+                                        <td><a href="#">详细</a></td>
+                                        <td><a href="#">删除</a></td>
 
+                                </tr>
+                                </c:forEach>
 
                                 </tbody>
                             </table>

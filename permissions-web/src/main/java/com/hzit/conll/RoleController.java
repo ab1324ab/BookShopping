@@ -23,11 +23,11 @@ public class RoleController {
     /**
      * 通过查询角色表全部内容的方法，
      */
-    @RequestMapping("/findroleall")
+ /*   @RequestMapping("/findroleall")
     @ResponseBody
-    public List<Role> fingRoleAll() {
+    public List<Role> fingRoleAllTest() {
         return roleImpl.findRoleAll();
-    }
+    }*/
 
 
     /**
@@ -39,7 +39,7 @@ public class RoleController {
         List<Role> rlist=roleImpl.findRoleAll();
         modelMap.put("rlist",rlist);
 
-        return "shouye";
+        return "roleindex";
     }
 
 
@@ -75,11 +75,10 @@ public class RoleController {
      */
     @RequestMapping("/toaddrole")
     public String toAddRole(Role role, ModelMap modelMap) {
+      /*  List<Role> addList = roleImpl.findRoleAll();
+        modelMap.put("addList", addList);*/
 
-        List<Role> addList = roleImpl.findRoleAll();
-        modelMap.put("addList", addList);
-
-        return "";//返回Json字符串到增加页面上，
+        return "addroletwo";//返回Json字符串到增加页面上，
     }
 
 
