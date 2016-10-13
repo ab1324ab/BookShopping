@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hzit.dao.mapper.ModuleMapper">
+
+    <sql id="moduleBaseColumnSql">
+        moduleId,
+        moduleName,
+        moduleLevel,
+        moduleParentId,
+        moduleurl,
+        moduleChildren,
+        moduleOrder
+    </sql>
+
+    <sql id="moduleBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.moduleId)">
+                    moduleId = #{map.moduleId}
+                </if>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.moduleName)">
+                    AND moduleName = #{map.moduleName}
+                </if>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.moduleLevel)">
+                    AND moduleLevel = #{map.moduleLevel}
+                </if>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.moduleParentId)">
+                    AND moduleParentId = #{map.moduleParentId}
+                </if>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.moduleurl)">
+                    AND moduleurl = #{map.moduleurl}
+                </if>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.moduleChildren)">
+                    AND moduleChildren = #{map.moduleChildren}
+                </if>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.moduleOrder)">
+                    AND moduleOrder = #{map.moduleOrder}
+                </if>
+            </where>
+        </if>
+    </sql>
+
+    <insert id="insertModule" parameterType="com.hzit.dao.entity.Module">
+        INSERT INTO module(
+        <include refid="moduleBaseColumnSql"/>
+        )VALUES(
+            #{moduleId},
+            #{moduleName},
+            #{moduleLevel},
+            #{moduleParentId},
+            #{moduleurl},
+            #{moduleChildren},
+            #{moduleOrder}
+        )
+    </insert>
+
+    
+    <delete id="deleteModuleByModuleId" parameterType="Integer">
+        DELETE FROM module WHERE moduleId = #{moduleId}
+    </delete>
+
+    <update id="updateModule" parameterType="com.hzit.dao.entity.Module">
+        UPDATE module
+        <set>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(moduleName)">
+                moduleName = #{moduleName} ,
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(moduleLevel)">
+                moduleLevel = #{moduleLevel} ,
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(moduleParentId)">
+                moduleParentId = #{moduleParentId} ,
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(moduleurl)">
+                moduleurl = #{moduleurl} ,
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(moduleChildren)">
+                moduleChildren = #{moduleChildren} ,
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(moduleOrder)">
+                moduleOrder = #{moduleOrder} ,
+            </if>
+        </set>
+        WHERE moduleId = #{moduleId}
+    </update>
+
+    <select id="searchModuleByParams" parameterType="map" resultMap="moduleMap">
+        SELECT
+        <include refid="moduleBaseColumnSql"/>
+        FROM module
+        <include refid="moduleBaseWhereSql"/>
+    </select>
+
+    <resultMap type="com.hzit.dao.entity.Module" id="moduleMap">
+        <id column="moduleId" property="moduleId"/>
+        <result column="moduleName" property="moduleName"/>
+        <result column="moduleLevel" property="moduleLevel"/>
+        <result column="moduleParentId" property="moduleParentId"/>
+        <result column="moduleurl" property="moduleurl"/>
+        <result column="moduleChildren" property="moduleChildren"/>
+        <result column="moduleOrder" property="moduleOrder"/>
+    </resultMap>
+
+</mapper>
