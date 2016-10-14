@@ -7,11 +7,10 @@
 .am-topbar .am-topbar-left {
     background: #ffffff;
     float: left;
-	margin-left:12%;
     text-align: center;
     height: 73px;
     position: relative;
-    width: 930px;
+    width: 100%;
     z-index: 1;
    
 }
@@ -73,7 +72,7 @@
     background: rgba(152, 166, 173, 0.1);
     box-shadow: none;
     border-radius: 30px;
-    width: 190px;
+    width: 150px;
 }
 
 .inform{
