@@ -17,32 +17,51 @@ import java.util.List;
 public class UserControl {
     @Autowired
     private UserManagementImpl userManagementImpl;
-
-    @RequestMapping("/addu")
+    /*
+   * 显示所有用户到页面
+   * */
+    @RequestMapping("/finduserall")
+    public String findUser(ModelMap modelMap){
+        List<User> list=userManagementImpl.findAllUser();
+        modelMap.put("list",list);
+        return "userindex";
+    }
+    /*
+    * 增加用户，返回Json字符串
+    * */
+    @RequestMapping("/adduser")
     @ResponseBody
     public boolean addUser(User user){
         boolean b=userManagementImpl.addUser(user);
         return b;
     }
-    @RequestMapping("/toadd")
+    //增加跳转页面
+    @RequestMapping("/toadduser")
+    public String addUser(){
+        return "adduser";
+    }
+
+    /*
+    * 删除用户
+    * */
+    @RequestMapping("/deluser")
     @ResponseBody
-    public String addUser(ModelMap modelMap){
-        List<User> list=userManagementImpl.findAllUser();
-        modelMap.put("list",list);
-        return "";
+    public int deleteUser(@RequestParam("userId")Integer userId){
+        int i=userManagementImpl.deleteUser(userId);
+        return i;
     }
-    @RequestMapping("/deleteu")
-    public String deleteUser(@RequestParam("userId")Integer userId){
-        userManagementImpl.deleteUser(userId);
-        return "";
-    }
+
+    /*
+    * 修改用户，返回Json字符串
+    * */
     @RequestMapping("/updateu")
     @ResponseBody
     public int updateUser(User user){
         int i=userManagementImpl.updateUser(user);
         return i;
     }
-    @RequestMapping("/toupdate")
+    //编辑跳转页面
+    @RequestMapping("/toupdateu")
     public String findUser(@RequestParam("userid")Integer userid,ModelMap modelMap){
         User u=userManagementImpl.findOne(userid);
         modelMap.put("user",u);
@@ -50,6 +69,7 @@ public class UserControl {
         modelMap.put("ulist",ulist);
         return "";
     }
+
 }
 
 
