@@ -21,36 +21,13 @@
     <link rel="stylesheet" href="assets/css/page/typography.css"/>
     <link rel="stylesheet" href="assets/css/page/form.css"/>
     <link rel="stylesheet" href="assets/css/component.css"/>
-    <script src="../../assets/js/jquery-2.1.0.js"></script>
-    <script>
-        $(function () {
-            $(".dele").click(function () {
-                if (confirm("您确认删除吗？")) {
-                    var pid = $(this).attr("title");
-                    $.post("delerole", {roleId: pid}, function (data) {
-                        if (data == 1) {
-                            alert("删除成功")
-                            location.reload();/*明明加了刷新可是为什么不行？*/
-                        } else {
-                            alert("删除失败")
-                            location.reload();
-                        }
-                    });
-                }
-            });
-        });
-
-
-
-    </script>
-    <script>
-
+   <%-- <script>
         function openWin() {
             window.open("toaddrole","newwindow", "height=500, width=700,top=100,left=350, toolbar =no, menubar=no, scrollbars=no, resizable=no, location=no, status=no")
         }
 
 
-    </script>
+    </script>--%>
 </head>
 
 <body>
@@ -65,7 +42,7 @@
 
 <div class="admin">
 
-    <div class="admin-sidebar am-ofcanvas  am-paddifng-0" id="admin-offcanvas">
+    <div class="admin-sidebar am-offcanvas  am-padding-0" id="admin-offcanvas">
         <div class="am-offcanvas-bar admin-offcanvas-bar">
             <!-- User -->
             <div class="user-box am-hide-sm-only">
@@ -103,61 +80,6 @@
                     </ul>
                 </li>
             </ul>
-        </div>
-    </div>
-    <div class="content-page">
-        <!-- Start content -->
-        <div class="content">
-            <div class="am-g">
-
-
-                <!-- col start -->
-                <div class="am-u-md-8">
-                    <div class="card-box">
-                        <h4 class="header-title m-t-0 m-b-30" style="align:center">角色管理</h4>
-
-                        <div class="am-scrollable-horizontal am-text-ms" style="font-family: '微软雅黑';">
-                            <table class="am-table am-text-nowrap">
-
-                                <thead>
-                                <tr>
-                                    <th><button onclick="openWin()" >新增</button></th>
-                                </tr>
-                                </thead>
-                                <thead>
-                                <tr>
-                                    <th>#角色编号</th>
-                                    <th>角色名称</th>
-                                    <th>角色描述</th>
-                                    <th>操作</th>
-                                    <th>查看</th>
-                                    <th>删除</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <c:forEach items="${rlist}" var="rr">
-                                <tr>
-
-                                        <td>${rr.roleId}</td>
-                                        <td>${rr.roleName}</td>
-                                        <td>${rr.roleDepict}</td>
-                                        <td><a href="#">编辑</a></td>
-                                        <td><a href="#">详细</a></td>
-                                        <td><button class="dele" title="${rr.roleId}">删除</button></td>
-
-                                </tr>
-                                </c:forEach>
-
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                <!-- col end -->
-            </div>
-            <!-- Row end -->
-
-
         </div>
     </div>
 </div>
