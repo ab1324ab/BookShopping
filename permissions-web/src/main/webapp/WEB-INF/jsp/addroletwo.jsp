@@ -23,17 +23,39 @@
     <link rel="stylesheet" href="assets/css/component.css"/>
     <style>
         .top {
-            margin-right: auto;
-            margin-left: auto;
-            width: 1500px;
-            height: 311px;
+	margin-right: auto;
+	margin-left: auto;
+	width: 1030px;
+	height: 311px;
+
         }
     </style>
+    <script src="../../assets/js/jquery-2.1.0.js"></script>
+<script>
+    $(function () {
+        $("#save").click(function () {
+            $.post("addrole", {
+                "roleName": $("#roleName").val(),
+
+                "roleDepict": $("#roleDepict").val()
+
+            }, function (data) {
+                if (data == true) {
+                    alert("新增成功！")
+                    window.close();
+                } else {
+                    alert("新增失败！")
+                    window.close();
+                }
+            });
+        });
+    });
+</script>
 </head>
 <body>
 <div class="top">
 
-    <div class="admin">
+    <div >
         <div >
             <!-- Start content -->
             <div >
@@ -75,7 +97,7 @@
                                 <form name="form1" method="post" action="">
                                     <table width="357" border="0" cellspacing="0" cellpadding="0">
                                         <tr>
-                                            <td width="353" align="right"><input type="submit" name="button" id="button"
+                                            <td width="353" align="right"><input type="button"id="save"
                                                                                  value="新增"></td>
                                         </tr>
                                     </table>
@@ -92,7 +114,8 @@
         </div>
     </div>
 </div>
-</div >
+</div>
+
 <!-- navbar -->
 <a href="admin-offcanvas" class="am-icon-btn am-icon-th-list am-show-sm-only admin-menu"
    data-am-offcanvas="{target: '#admin-offcanvas'}"><!--<i class="fa fa-bars" aria-hidden="true"></i>--></a>

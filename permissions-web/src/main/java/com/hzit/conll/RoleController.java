@@ -42,6 +42,16 @@ public class RoleController {
         return "roleindex";
     }
 
+    /**
+     * 菜单的页面
+     */
+    @RequestMapping("/tomenu")
+    public String toMenu(ModelMap modelMap) {
+     /*   List<Role> rlist=roleImpl.findRoleAll();
+        modelMap.put("rlist",rlist);*/
+
+        return "menu";
+    }
 
 
     /**
@@ -86,6 +96,7 @@ public class RoleController {
      * 根据角色ID删除角色的方法，返回1或者-1
      */
     @RequestMapping("/delerole")
+    @ResponseBody
     public int deleRole(@RequestParam("roleId") Integer roleId) {
 
         try {
