@@ -23,14 +23,14 @@ public class UserLogin {
         User userl=userLogin.login(user,pwd);
         if (userl!=null){
             session.setAttribute("user",userl);
-            return "redirect:/index.html";
+            return "redirect:/index.jsp?target=_blank";
         }
         return "redirect:/LonginJson";
     }
 
     @RequestMapping("/LonginJson")
     @ResponseBody
-    public Object loginJson(){
-        return "账号密码错误!";
+    public String loginJson(){
+        return "错误";
     }
 }

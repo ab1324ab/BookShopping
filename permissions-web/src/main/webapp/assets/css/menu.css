@@ -7,10 +7,11 @@
 .am-topbar .am-topbar-left {
     background: #ffffff;
     float: left;
+	margin-left:12%;
     text-align: center;
     height: 73px;
     position: relative;
-    width: 290px;
+    width: 930px;
     z-index: 1;
    
 }
