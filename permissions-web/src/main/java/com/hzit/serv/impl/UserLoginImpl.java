@@ -15,9 +15,6 @@ import java.util.Map;
  */
 @Service
 public class UserLoginImpl implements UserLogin{
-    public UserLoginImpl(){
-        System.out.println("我出书了");
-    }
     @Autowired
     UserMapper userMapper;
     @Override
