@@ -97,7 +97,7 @@
                     <a class="am-cf" data-am-collapse="{target: '#collapse-nav5'}"><span class="am-icon-file"></span>
                         权限设置 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
                     <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-nav5">
-                        <li><a href="#" class="am-cf"> 用户管理</a></li>
+                        <li><a href="finduserall" class="am-cf"> 用户管理</a></li>
                         <li><a href="findroleall">角色管理</a></li>
                         <li><a href="#">模块管理</a></li>
                     </ul>
