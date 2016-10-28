@@ -12,12 +12,14 @@ public interface ModuleMapper {
 
 	void insertModule(Module module);
 
-	void deleteModuleByModuleId(Integer moduleId);
+	int deleteModuleByModuleId(Integer moduleId);
 
-	void updateModule(Module module);
+	int updateModule(Module module);
 
 	Page<Module> searchModuleByParams(@Param("map") Map<String, String> map, Pageable pageable);
 
 	List<Module> searchModuleByParams(@Param("map") Map<String, String> map);
+
+
 
 } 
